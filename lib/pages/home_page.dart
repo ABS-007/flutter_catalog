@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Center(
           child: Text(
-            "ABS",
+            "Catalog App",
             style: TextStyle(color: Colors.black),
           ),
         ),

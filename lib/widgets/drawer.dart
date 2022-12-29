@@ -16,6 +16,7 @@ class MyDrawer extends StatelessWidget {
             DrawerHeader(
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(color: Colors.deepPurple),
                 accountName: Text("Ashish"),
                 accountEmail: Text("aashishbibyan007@gmail.com"),
                 currentAccountPicture:
