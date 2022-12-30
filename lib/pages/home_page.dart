@@ -9,6 +9,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dummylist = List.generate(10, (index) => CatalogModel.items[0]);
     return Scaffold(
       appBar: AppBar(
         title: Center(
@@ -19,11 +20,13 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-      itemCount: CatalogModel.items.length,
-      itemBuilder: (BuildContext context, int index) {
-        return ItemWidget(items: CatalogModel.items[index],);
-      },
-    ),
+        itemCount: dummylist.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ItemWidget(
+            items: dummylist[index],
+          );
+        },
+      ),
       drawer: MyDrawer(),
     );
   }
