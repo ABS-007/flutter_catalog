@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/widgets/drawer.dart';
 
+import '../models/catalog.dart';
+import '../widgets/item_widget.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -15,7 +18,12 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(child: Text("Welcome to My World")),
+      body: ListView.builder(
+      itemCount: CatalogModel.items.length,
+      itemBuilder: (BuildContext context, int index) {
+        return ItemWidget(items: CatalogModel.items[index],);
+      },
+    ),
       drawer: MyDrawer(),
     );
   }
