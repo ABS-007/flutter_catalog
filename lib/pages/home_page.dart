@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_catalog/widgets/drawer.dart';
 import '../models/catalog.dart';
-import '../widgets/item_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,14 +43,42 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: (CatalogModel.items.isNotEmpty)
-            ? ListView.builder(
-                itemCount: CatalogModel.items.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ItemWidget(
-                    items: CatalogModel.items[index],
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    crossAxisCount: 2),
+                itemBuilder: (context, index) {
+                  final items = CatalogModel.items[index];
+                  return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: GridTile(
+                      header: Container(
+                          decoration: BoxDecoration(color: Colors.deepPurple),
+                          child: Text(
+                            items.name,
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      footer: Container(
+                          decoration: BoxDecoration(color: Colors.black),
+                          child: Text(
+                            items.price.toString(),
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      child: Image.network(items.image),
+                    ),
                   );
                 },
+                itemCount: CatalogModel.items.length,
               )
+
+            //  ListView.builder(
+            //     itemCount: CatalogModel.items.length,
+            //     itemBuilder: (BuildContext context, int index) => ItemWidget(
+            //           items: CatalogModel.items[index],
+            //         ))
             : Center(
                 child: CircularProgressIndicator(),
               ),
