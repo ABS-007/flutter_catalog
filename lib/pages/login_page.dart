@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -103,7 +104,8 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: BoxDecoration(
                   // shape: changebutton ? BoxShape.circle : BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(changebutton ? 50 : 5),
-                  color: Colors.deepPurple,
+                  // ignore: deprecated_member_use
+                  color: context.theme.buttonColor,
                 ),
                 child: changebutton
                     ? Icon(
