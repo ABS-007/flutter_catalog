@@ -2,10 +2,10 @@ class CatalogModel {
   static List<Item> items = [];
 
   //functions
-  static Item getbyid(int id) =>
+  Item getbyid(int id) =>
       // ignore: null_closures
       items.firstWhere((element) => element.id == id, orElse: null);
-  static Item getbypos(int pos) => items[pos];
+  Item getbypos(int pos) => items[pos];
 }
 
 class Item {

@@ -32,8 +32,13 @@ class _CartTotal extends StatelessWidget {
         "\$$totalprice".text.xl4.make(),
         ElevatedButton(
           onPressed: (() {
-            print("This feature will be available soon");
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: "This feature will be available soon".text.make()));
           }),
+          style: ButtonStyle(
+              backgroundColor:
+                  // ignore: deprecated_member_use
+                  MaterialStateProperty.all(context.theme.buttonColor)),
           child: "Buy".text.make(),
         )
       ],
